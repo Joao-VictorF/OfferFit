@@ -1,5 +1,12 @@
+<script lang="ts" setup>
+import AppNavbar from './components/AppNavbar.vue';
+</script>
+
 <template>
-  <router-view />
+  <div class="flex flex-col">
+    <AppNavbar />
+    <router-view />
+  </div>
 </template>
 
 <style>
