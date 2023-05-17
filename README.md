@@ -1,5 +1,9 @@
 # Web/Full Stack Home Assignment
 
+Note: I was using Node.js v17.7.1 and the template was not running because of some ssl error (yep, strange, right?), so downgrading to Node.js v16 using `nvm use 16.18.0` worked for me.
+
+You can see repository [here](https://github.com/Joao-VictorF/OfferFit) =)
+
 First run
 ----
 ```shell
