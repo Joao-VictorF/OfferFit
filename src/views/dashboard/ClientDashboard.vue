@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import KPIs from './dashboard/components/KPIs.vue';
-import VisualizationChart from './dashboard/components/VisualizationChart.vue'
+import KPIs from './components/KPIs.vue';
+import VisualizationChart from './components/VisualizationChart.vue'
 </script>
 
 <template>

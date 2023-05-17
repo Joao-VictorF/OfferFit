@@ -1,4 +1,4 @@
-export default interface IServerWidgetData {
+interface IServerWidgetData {
     totalOffers: number
     totalRepeatersExp: number
     totalRepeatersCtrl: number
@@ -6,16 +6,13 @@ export default interface IServerWidgetData {
     totalCLVCtrl: number
 }
 
-export default class ChartCLVData {
-    label: string;
-    expSum: number;
-    ctrlSum: number;
-
-    constructor(label: string, expSum: number, ctrlSum: number) {
-        this.label = label;
-        this.expSum = expSum;
-        this.ctrlSum = ctrlSum;
-    }
+interface ChartCLVData {
+    label: string
+    expSum: number
+    ctrlSum: number
 }
 
-
+export {
+    IServerWidgetData,
+    ChartCLVData
+}

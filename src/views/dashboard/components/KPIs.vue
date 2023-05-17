@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { ArrowSmDownIcon, ArrowSmUpIcon } from '@heroicons/vue/solid'
 import LoadingCardSkeleton from '@/components/LoadingCardSkeleton.vue';
-import axios from 'axios'
-import { ref, onMounted } from 'vue'
+import DashboardService from '@/services/DashboardService';
+import { ref } from 'vue'
+
+const { kpisData, loading } = DashboardService.getKPIs();
 
 interface Stat {
   name: String
@@ -47,25 +49,6 @@ const stats = ref<Array<Stat>>([
   },
 ])
 
-const loading = ref<boolean>(true)
-const kpisData = ref<Record<string, Number>>({})
-
-function getKPIs() {
-  axios.get('/api/dashboard/widgets')
-    .then(response => {
-      kpisData.value = response.data;
-      // This is not needed, but the loading was not beeing showed because the request is to fast
-      // So I put this just for exemplification of the time to receive a req response.
-      setTimeout(() => {
-        loading.value = false
-      }, 500);
-    })
-    .catch(error => {
-      // @TODO: add error notification
-      console.log(error);
-    });
-}
-
 function getStatText(item: Stat) {
   const value: Number = kpisData.value[item.stat as string]
   if (item.formatMoney)
@@ -73,8 +56,6 @@ function getStatText(item: Stat) {
 
   return value
 }
-
-onMounted(() => getKPIs())
 </script>
 
 <template>
@@ -82,6 +63,9 @@ onMounted(() => getKPIs())
     v-if="loading"
     class="flex flex-wrap"
   >
+    <div class="text-2xl text-left leading-6 font-medium text-gray-900 w-full">
+      Last 30 days
+    </div>
     <div
       v-for="i in 5"
       :key="i"
